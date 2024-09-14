@@ -1,13 +1,15 @@
 export const headerGen = (() => {
 
-    const link = document.createElement('link');
-    link.rel = 'preload'
-    link.href = './header.css';
-    link.as ='style';
-    document.head.appendChild(link);
+    //const link = document.createElement('link');
+    //link.rel = 'preload'
+    //link.href = './header.css';
+    //link.as ='style';
+    //document.head.appendChild(link);
     const stylesheet = document.createElement('link')
+    // Webpack-relative path (for production with Webpack)
+    // import './header.css';
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = './header.css';
+    stylesheet.href = './node_modules/uiframeworklite/src/components/header/header.css';
     document.head.appendChild(stylesheet)
     
     const body = document.querySelector('body')
@@ -36,7 +38,6 @@ export const headerGen = (() => {
         };
         nav.append(anchor)
     };
-
     nav.classList.add('navBar')
     const socials = document.createElement('div')
     socials.classList.add('socials')
