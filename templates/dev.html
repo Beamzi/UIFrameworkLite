@@ -11,6 +11,8 @@
         import { headerGen } from './node_modules/uiframeworklite/src/components/header/header.js'
         headerGen();
     </script>
+
+
 </head>
 <body>
 
@@ -20,6 +22,10 @@
 
     <!-- delete these scripts for production with Webpack -->
     <script src="./js/main.js"></script>
+        <!--use this if your importing components to main.js, don't forget to add defer for <head>
+        <script src="./js/main.js" type="module"></script> -->
+
+
 
     
 </body>

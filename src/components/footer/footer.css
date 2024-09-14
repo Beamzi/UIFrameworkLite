@@ -1,0 +1,93 @@
+/* Basic CSS Reset with border-box */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: monospace;
+    line-height: 1.5;
+}
+
+ol, ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.componentFooter {
+    background-color: rgb(79, 79, 79);
+}
+
+.copySection {
+    padding: 15px;
+    a {
+        color: blue;
+    }
+}
+
+.sectionOfLists {
+    border: 3px blue solid;
+    display: flex;
+    min-width: 90%;
+    justify-content: center;
+    h3 {
+        color: white;
+    }
+    > * {
+        padding: 15px;
+        border: 3px red solid;
+        min-width: 200px;
+
+    };
+    ul {
+        display: flex;
+        flex-direction: column;
+
+    };
+    li {
+        display: flex;
+        align-items: center;
+        align-content: center;
+
+        font-size: 0.8em;
+        color: rgb(255, 255, 255);
+        padding: 2px;
+        border-bottom: 1px rgba(192, 192, 192, 0.248) solid;
+
+        
+
+    };
+    a {
+        
+        font-size: 1.4em;
+        color: rgb(134, 134, 134);
+        padding-left: 7px;
+        font-family: monospace;
+        font-weight: 200;
+        
+        &:hover {
+            color: blue;
+        };
+    };
+    .anchorDiv {
+        border: 3px red solid;
+        margin-left: 15px;
+    }
+}
