@@ -1,91 +1,94 @@
 
+class footerComponent extends HTMLElement {
+    constructor() {
+        super()
+        const shadow = this.attachShadow({mode: 'open'});
 
-const footerGen = (() => {
-    const footerData = {
-        companyName: 'Default Company Name',
-        lists: [
-            {
-                heading: 'Default Heading 1',
-                items: ['Default Link 1', 'Default Link 2']
-            },
-            {
-                heading: 'Default Heading 2',
-                items: ['Default Link 3', 'Default Link 4']
-            },
-            {
-                heading: 'Default Heading 3',
-                items: ['Default Link 5', 'Default Link 6']
-            }
-        ]
+
+
+        shadow.innerHTML = `
+        <footer class="footer">
+            <div class="footer__list-container">
+                <ul class="footer__list">
+                    <li class="footer__item"><a>Lorem, ipsum dolor.</a></li>
+                    <li><a>Lorem, ipsum dolor.</a></li>
+                    <li><a>Lorem, ipsum dolor.</a></li>
+                </ul>
+            </div>
+            <div class="footer__list-container">
+                <ul class="footer__list">
+                    <li class="footer__item"><a>Lorem, ipsum dolor.</a></li>
+                    <li><a>Lorem, ipsum dolor.</a></li>
+                    <li><a>Lorem, ipsum dolor.</a></li>
+                </ul>
+            </div>
+            <div class="footer__list-container">
+                <ul class="footer__list">
+                    <li class="footer__item"><a>Lorem, ipsum dolor.</a></li>
+                    <li><a>Lorem, ipsum dolor.</a></li>
+                    <li><a>Lorem, ipsum dolor.</a></li>
+                </ul>
+            </div>
+        </footer>}
+        `;
     };
 
+	connectedCallback() {
+        // Add event listener when the element is added to the DOM
+    }
+	disconnectedCallback() {
+        // Remove event listener when the element is removed from the DOM
+    }
+	attributeChangedCallback(name, oldValue, newValue) {
+    }
 
-    /*
-        footerData.lists.forEach(list => {
-            const listDiv = document.createElement('div');
-            listDiv.classList.add('listContainer');
-            const h3 = document.createElement('h3');
-            h3.textContent = list.heading;
-            listDiv.append(h3);
-            listSection.append(listDiv);
-            const ul = document.createElement('ul');
-            listDiv.append(ul);
+}
+customElements.define('footer-component', footerComponent )
 
-            list.items.forEach(item => {
-                const li = document.createElement('li');
-                li.className = 'fa-solid fa-angle-right';
-                const anchor = document.createElement('a');
-                anchor.textContent = item;
-                li.append(anchor);
-                ul.append(li);
-            });
-        });
 
-    */
 
-    const body = document.querySelector('body');
-    const footer = document.createElement('footer')
-    footer.classList.add('componentFooter');
-    body.append(footer);
-    const listSection = document.createElement('section');
-    listSection.classList.add('sectionOfLists')
-    footer.append(listSection)
 
-    for (let i = 0; i < 3; i++) {
-        const listDiv = document.createElement('div');
-        listDiv.classList.add('listContainer')
-        const h3 = document.createElement('h3');
-        h3.textContent = 'lorem Ipsum'
-        listDiv.append(h3)
-        listSection.append(listDiv)
-        const ul = document.createElement('ul');
-        listDiv.append(ul)
+/* class FooterComponent extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
 
-        for (let j = 0; j < 3; j++) {
-            const li = document.createElement('li');
-            li.className = 'fa-solid fa-angle-right';
-            ul.append(li);
-           // const anchorDiv = document.createElement('div');
-           //  li.append(anchorDiv);
-            const anchor = document.createElement('a')
-            anchor.textContent = 'lorem ipsum hahahahhsh';
-           //  anchorDiv.classList.add('anchorDiv')
-            li.append(anchor)
+  async connectedCallback() {
+    const [htmlResponse, cssResponse] = await Promise.all([
+      fetch('/path/to/footer.html'),
+      fetch('/path/to/footer.css')
+    ]);
 
-        };
+    const [htmlContent, cssContent] = await Promise.all([
+      htmlResponse.text(),
+      cssResponse.text()
+    ]);
 
-    };
-    
-    const date = new Date();
-    let year = date.getFullYear();
-    const companyName = '';
+    this.shadowRoot.innerHTML = `
+      <style>${cssContent}</style>
+      ${htmlContent}
+    `;
+  }
+}
 
-    const copySection = document.createElement('section')
-    copySection.classList.add('copySection')
-    footer.append(copySection)
-    const copyright = document.createElement('p')
-    copyright.innerHTML = `© ${year} ${companyName}. All rights reserved. Website design by <a href="https://brisbanewebsitedesign.au/" target="_blank" rel="noopener noreferrer"><b>Daymedia</b> at Brisbane Website Design</a>.` 
-    copySection.append(copyright)
+customElements.define('footer-component', FooterComponent);
 
-})();
+class FooterComponent extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
 
+  connectedCallback() {
+    const template = document.getElementById('footer-template');
+    if (template) {
+      const templateContent = template.content;
+      this.shadowRoot.appendChild(templateContent.cloneNode(true));
+    }
+  }
+}
+
+customElements.define('footer-component', FooterComponent);
+
+*/
