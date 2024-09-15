@@ -29,4 +29,55 @@ table {
 a {
     text-decoration: none;
     color: inherit;
+    font-family: monospace;
+
+}
+.footer__copyright-section > *{
+    max-width: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(34, 34, 34);
+    min-height: 200px;
+}
+.footer__list-section {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+
+    .footer_list-title {
+        color: white;
+        padding: 0px 10px 0px 10px;
+    }
+    .footer__list {
+        border: 3px red solid;
+        display: flex;
+        flex-direction: column;
+    }
+    .footer__item {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px rgba(207, 207, 207, 0.278) solid;
+        padding: 3px;
+        font-size: 0.7em;
+        color: white;
+        a {
+            font-weight: 200;
+            color: rgba(173, 173, 173, 0.62);
+            font-size: 1.5em;
+            padding: 0px 5px 0px 5px;
+            &:hover {
+                color: blue;
+            }
+        }
+    }
+
+
+    
 }

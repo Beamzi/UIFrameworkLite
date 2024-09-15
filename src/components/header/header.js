@@ -1,59 +1,45 @@
-export const headerGen = (() => {
 
-    //const link = document.createElement('link');
-    //link.rel = 'preload'
-    //link.href = './header.css';
-    //link.as ='style';
-    //document.head.appendChild(link);
-    const stylesheet = document.createElement('link')
-    // Webpack-relative path (for production with Webpack)
-    // import './header.css';
-    stylesheet.rel = 'stylesheet';
-    stylesheet.href = './node_modules/uiframeworklite/src/components/header/header.css';
-    document.head.appendChild(stylesheet)
-    
-    const body = document.querySelector('body')
-    const header = document.createElement('header')
-    header.classList.add('componentHeader');
-    body.appendChild(header)
-    const logo = document.createElement('div')
-    logo.classList.add('logo')
-    const img = document.createElement('img')
-    logo.appendChild(img)
-    img.classList.add('logoImg')
-    img.src = 'assets/Screenshot 2024-09-10 151334ss.png';
-    img.alt = 'logo';
-    const nav = document.createElement('nav')
+const headerComponentModule = (() => {
+    class headerComponent extends HTMLElement {
+        constructor() {
+            super();
 
-    for (let i = 0; i < 4; i++) {
-        const menuItems = ['home', 'about', 'services', 'contact']
-        let anchor = document.createElement('a')
-        anchor.textContent = menuItems[i];
-        anchor.classList.add(menuItems[i])
-        if (i !== 0) {
-            anchor.href = `../${menuItems[i]}.html`;
-        }
-        else {
-            anchor.href = '../index.html'
+        //    const shadow = this.attachShadow({mode: 'open'});
+        //   shadow.innerHTML = `
+        this.innerHTML = `
+            <header class="header">
+                <div class="header__logo">
+                    <img class="header__img" src="./assets/Screenshot 2024-09-10 151334ss.png"></img>
+                </div>
+                <nav class="header__nav">
+                    <a href="#" class="header__anchor">home</a>
+                    <a href="#" class="header__anchor">about</a>
+                    <a href="#" class="header__anchor">services</a>
+                    <a href="#" class="header__anchor">contact</a>
+                </nav>
+                <div class="header__icons">
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="facebook.com" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="twitter.com" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                </div>
+            </header>
+            `;
         };
-        nav.append(anchor)
-    };
-    nav.classList.add('navBar')
-    const socials = document.createElement('div')
-    socials.classList.add('socials')
-    header.append(logo, nav, socials)
+        connectedCallback() {
+            //add event listeners here
+        };
+        disconnectedCallback() {
+            //remove event listeners here
+        };
+        attributeChangedCallback() {
+        };
 
-    const FAClasses = ['fa-brands fa-instagram', 'fa-brands fa-facebook', 'fa-brands fa-twitter'];
-    const ariaLabels = ['instagram', 'facebook', 'twitter'];
-    for (let i = 0; i < FAClasses.length; i++) {
-        let anchor = document.createElement('a');
-        anchor.setAttribute('aria-label', `${ariaLabels[i]}`)
-        anchor.setAttribute('target', '_blank');
-        anchor.setAttribute('rel', 'noopener noreferrer')
-        socials.append(anchor)
-        let icon = document.createElement('i');
-        anchor.append(icon)
-        icon.className = FAClasses[i];
     };
-
+    customElements.define('header-component', headerComponent)
 })();
