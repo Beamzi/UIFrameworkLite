@@ -30,54 +30,84 @@ a {
     text-decoration: none;
     color: inherit;
     font-family: monospace;
-
 }
-.footer__copyright-section > *{
-    max-width: 50px;
+
+.footer__copyright-section {
+    padding: 20px 0px 25px 0px;
     display: flex;
-    justify-content: center;
+    max-width: 80%;
+    align-self: center;
+    p {
+        text-align: center;
+        color: white;
+        a {
+            color: rgb(216, 87, 255);
+        }
+    }
 }
 
+@media (max-width: 500px) {
+    .footer__list-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer__list-container {
+        min-width: 80%;
+    }
+}
+
+@media (min-width: 500px) {
+    .footer__list-container {
+        min-width: 25%;
+    }
+}
 
 .footer {
     display: flex;
+    font-family: monospace;
     flex-direction: column;
     justify-content: center;
     background-color: rgb(34, 34, 34);
     min-height: 200px;
+    a {
+        font-family: monospace;
+        text-decoration: none;
+        color: inherit;
+    }
 }
+
 .footer__list-section {
-    padding: 20px;
+
+    padding: 20px 20px 0px 20px;
     display: flex;
     justify-content: center;
 
     .footer_list-title {
         color: white;
         padding: 0px 10px 0px 10px;
+        font-size: 18px;
     }
     .footer__list {
-        border: 3px red solid;
         display: flex;
         flex-direction: column;
-    }
+    } 
     .footer__item {
+        width: 80%;
         display: flex;
         align-items: center;
-        border-bottom: 1px rgba(207, 207, 207, 0.278) solid;
+        border-bottom: 1px rgba(236, 236, 236, 0.096) solid;
         padding: 3px;
         font-size: 0.7em;
         color: white;
         a {
             font-weight: 200;
-            color: rgba(173, 173, 173, 0.62);
+            color: rgba(173, 173, 173, 0.795);
             font-size: 1.5em;
-            padding: 0px 5px 0px 5px;
+            padding: 5px 5px 5px 5px;
             &:hover {
-                color: blue;
+                color: rgb(216, 87, 255);
             }
         }
     }
-
-
-    
 }

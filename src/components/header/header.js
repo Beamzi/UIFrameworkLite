@@ -3,9 +3,8 @@ const headerComponentModule = (() => {
     class headerComponent extends HTMLElement {
         constructor() {
             super();
-
         //    const shadow = this.attachShadow({mode: 'open'});
-        //   shadow.innerHTML = `
+        //    shadow.innerHTML = `
         this.innerHTML = `
             <header class="header">
                 <div class="header__logo">
