@@ -2,13 +2,12 @@
 export class footerComponent extends HTMLElement {
     constructor() {
         super();
-
         this.listData = {};
         this.init = {}
         this.render();
         this.initialize();
     };
-    
+
     initialize() {
         for (let i = 1; i <= 3; i++) {
             this.init[`counter${i}`] = 0;
@@ -27,19 +26,23 @@ export class footerComponent extends HTMLElement {
     };
     
     addItems(value, external) {
-        let newItem;
-        let secured;
+
         if (value > 0 && value < 4) {
             this.init[`counter${value}`]++;
-            if (external == true) {
+            let newItem;
+            let secured;
+
+            if (external === true) {
                 secured = `target="u_blank" rel="noopener noreferrer"`;
             }
             else secured = ``;
+
             newItem = `<li class="fa-solid fa-angle-right footer__item">
             <a href="${this.listData[`link${value}__0${this.init[`counter${value}`]}`]}" 
             ${secured}>
             ${this.listData[`item${value}__0${this.init[`counter${value}`]}`]}
             </a></li>`;
+
             this.init[`list${value}`].push(newItem);
             this.init[`listHTML${value}`] = this.init[`list${value}`].join('');
             }
@@ -51,6 +54,8 @@ export class footerComponent extends HTMLElement {
     };
     
     render() {
+        const date = new Date();
+        let year = date.getFullYear();
         this.innerHTML = `
         <style>
             .footer__copyright-section {
@@ -157,7 +162,7 @@ export class footerComponent extends HTMLElement {
             </section>
             <section class="footer__copyright-section">
                 <p class="footer__copyright"> 
-                    © year company. All rights reserved. Website design by <a href="https://brisbanewebsitedesign.au/" target="_blank" rel="noopener noreferrer"><b>Daymedia</b> at Brisbane Website Design</a>.
+                    © ${year} <b>${this.listData.company}.</b> All rights reserved. Website design by <a href="https://brisbanewebsitedesign.au/" target="_blank" rel="noopener noreferrer"><b>Daymedia</b> at Brisbane Website Design</a>.
                 </p>
             </section>
         </footer>
