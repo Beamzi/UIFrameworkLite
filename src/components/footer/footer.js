@@ -1,42 +1,58 @@
-export class footerComponent extends HTMLElement {
 
+export class footerComponent extends HTMLElement {
     constructor() {
         super();
 
-        this.listData = {
-
-            item1: `Hello`,
-            item2: `World`,
-            item3: `Example`,
-			link1: `blah`,
-			link2: `blah`,
-			link3: `blah`
-        };
-		
-        this.listItems = this.listControl();
+        this.listData = {};
+        this.init = {}
         this.render();
-    }
+        this.initialize();
+    };
+    
+    initialize() {
+        for (let i = 1; i <= 3; i++) {
+            this.init[`counter${i}`] = 0;
+            this.init[`listHTML${i}`] = ``;
+            this.init[`list${i}`] = this.listItems(i)
+        };
+    };
 
-    listControl() {
-		let items = {
-			item1: `<li class="fa-solid fa-angle-right footer__item"><a href="${this.listData.link1}">${this.listData.item1}</a></li>`,
-            item2: `<li class="fa-solid fa-angle-right footer__item"><a href="${this.listData.link2}">${this.listData.item2}</a></li>`,
-            item3: `<li class="fa-solid fa-angle-right footer__item"><a href="${this.listData.link3}">${this.listData.item3}</a></li>`
-		}
-	
-		let getItems =() => items
-        return { getItems };
-    }
+    listItems(num) {
+        return [];
+    };
 
     updateListData(newData) {
         this.listData = { ...this.listData, ...newData };
-        this.listItems = this.listControl().getItems()
         this.render();
-    }
-
+    };
+    
+    addItems(value, external) {
+        let newItem;
+        let secured;
+        if (value > 0 && value < 4) {
+            this.init[`counter${value}`]++;
+            if (external == true) {
+                secured = `target="u_blank" rel="noopener noreferrer"`;
+            }
+            else secured = ``;
+            newItem = `<li class="fa-solid fa-angle-right footer__item">
+            <a href="${this.listData[`link${value}__0${this.init[`counter${value}`]}`]}" 
+            ${secured}>
+            ${this.listData[`item${value}__0${this.init[`counter${value}`]}`]}
+            </a></li>`;
+            this.init[`list${value}`].push(newItem);
+            this.init[`listHTML${value}`] = this.init[`list${value}`].join('');
+            }
+        else  {
+            value = null
+            console.log('expects number >= 1 or <= 3')
+        };
+        this.render();
+    };
+    
     render() {
         this.innerHTML = `
-        <style>    
+        <style>
             .footer__copyright-section {
                 padding: 20px 0px 25px 0px;
                 display: flex;
@@ -50,7 +66,6 @@ export class footerComponent extends HTMLElement {
                     }
                 }
             }
-
             @media (max-width: 500px) {
                 .footer__list-section {
                     display: flex;
@@ -64,7 +79,7 @@ export class footerComponent extends HTMLElement {
 
             @media (min-width: 500px) {
                 .footer__list-container {
-                    min-width: 25%;
+                    width: 25%;
                 }
             }
 
@@ -87,6 +102,7 @@ export class footerComponent extends HTMLElement {
                 display: flex;
                 justify-content: center;
 
+
                 .footer_list-title {
                     color: white;
                     padding: 0px 10px 0px 10px;
@@ -95,6 +111,7 @@ export class footerComponent extends HTMLElement {
                 .footer__list {
                     display: flex;
                     flex-direction: column;
+
                 } 
                 .footer__item {
                     width: 80%;
@@ -105,6 +122,7 @@ export class footerComponent extends HTMLElement {
                     font-size: 0.7em;
                     color: white;
                     a {
+                        word-break: break-word;
                         font-weight: 200;
                         color: rgba(173, 173, 173, 0.795);
                         font-size: 1.5em;
@@ -119,27 +137,21 @@ export class footerComponent extends HTMLElement {
         <footer class="footer">
             <section class="footer__list-section">
                 <div class="footer__list-container">
-                    <h3 class="footer_list-title">List Title</h3>
+                    <h3 class="footer_list-title">${this.listData.list1__Heading}</h3>
                     <ul class="footer__list">
-                        ${this.listItems.item1}
-                        ${this.listItems.item2}
-                        ${this.listItems.item3}
+                        ${this.init.listHTML1}
                     </ul>
                 </div>
                 <div class="footer__list-container">
-                    <h3 class="footer_list-title">Lorem, ipsum dolor.</h3>
+                    <h3 class="footer_list-title">${this.listData.list2__Heading}</h3>
                     <ul class="footer__list">
-                        <li class="fa-solid fa-angle-right footer__item"><a href="#">Lorem, ipsum dolor.</a></li>
-                        <li class="fa-solid fa-angle-right footer__item"><a href="#">Lorem, ipsum dolor.</a></li>
-                        <li class="fa-solid fa-angle-right footer__item"><a href="#">Lorem, ipsum dolor.</a></li>
+                        ${this.init.listHTML2}
                     </ul>
                 </div>
                 <div class="footer__list-container">
-                    <h3 class="footer_list-title">Lorem, ipsum dolor.</h3>
+                    <h3 class="footer_list-title">${this.listData.list3__Heading}</h3>
                     <ul class="footer__list">
-                        <li class="fa-solid fa-angle-right footer__item"><a href="#">Lorem, ipsum dolor.</a></li>
-                        <li class="fa-solid fa-angle-right footer__item"><a href="#">Lorem, ipsum dolor.</a></li>
-                        <li class="fa-solid fa-angle-right footer__item"><a href="#">Lorem, ipsum dolor.</a></li>
+                        ${this.init.listHTML3}
                     </ul>
                 </div>
             </section>
@@ -153,13 +165,10 @@ export class footerComponent extends HTMLElement {
     }
 
     connectedCallback() {
-        // Add event listener when the element is added to the DOM
     }
     disconnectedCallback() {
-        // Remove event listener when the element is removed from the DOM
     }
     attributeChangedCallback(name, oldValue, newValue) {
-        // Handle attribute changes
     }
 }
 
