@@ -20,18 +20,30 @@ export class footerComponent extends HTMLElement {
         return [];
     };
 
+
     updateListData(newData) {
         this.listData = { ...this.listData, ...newData };
         this.render();
     };
-    
-    addItems(value, external) {
 
+
+    listControl (item, item2, item3, external) {
+        for (let i = 0; i < item; i++) {
+            this.addItems(1, external)
+        };
+        for (let i = 0; i < item2; i++) {
+            this.addItems(2, external)
+        };
+        for (let i = 0; i < item3; i++) {
+            this.addItems(3, external)
+        };
+    };
+
+    addItems(value, external) {
         if (value > 0 && value < 4) {
             this.init[`counter${value}`]++;
             let newItem;
             let secured;
-
             if (external === true) {
                 secured = `target="u_blank" rel="noopener noreferrer"`;
             }
@@ -52,12 +64,15 @@ export class footerComponent extends HTMLElement {
         };
         this.render();
     };
-    
+
     render() {
         const date = new Date();
         let year = date.getFullYear();
         this.innerHTML = `
         <style>
+            .hidden {
+                display: none !important;
+            }
             .footer__copyright-section {
                 padding: 20px 0px 25px 0px;
                 display: flex;
