@@ -1,5 +1,4 @@
 
-const headerComponentModule = (() => {
     class headerComponent extends HTMLElement {
         constructor() {
             super();
@@ -41,4 +40,3 @@ const headerComponentModule = (() => {
 
     };
     customElements.define('header-component', headerComponent)
-})();
