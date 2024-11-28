@@ -1,5 +1,7 @@
 //Use this on host side to control component.
 import { footerComponent } from '../node_modules/uiframeworklite/src/components/footer/footer.js'
+import { headerComponent } from '../node_modules/uiframeworklite/src/components/header/header.js'
+
 
 const footer = document.querySelector('footer-component');
 

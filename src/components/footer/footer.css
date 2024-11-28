@@ -77,6 +77,7 @@ a {
     }
 }
 
+
 .footer__list-section {
 
     padding: 20px 20px 0px 20px;
@@ -91,7 +92,7 @@ a {
     .footer__list {
         display: flex;
         flex-direction: column;
-    } 
+    }
     .footer__item {
         width: 80%;
         display: flex;

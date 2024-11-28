@@ -7,7 +7,7 @@ export class footerComponent extends HTMLElement {
         this.render();
         this.initialize();
     };
-
+    
     initialize() {
         for (let i = 1; i <= 3; i++) {
             this.init[`counter${i}`] = 0;
@@ -19,13 +19,10 @@ export class footerComponent extends HTMLElement {
     listItems(num) {
         return [];
     };
-
-
     updateListData(newData) {
         this.listData = { ...this.listData, ...newData };
         this.render();
     };
-
 
     listControl (item, item2, item3, external) {
         for (let i = 0; i < item; i++) {
