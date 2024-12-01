@@ -6,7 +6,6 @@ export class headerComponent extends HTMLElement {
         this.render();
     //    const shadow = this.attachShadow({mode: 'open'});
     //    shadow.innerHTML = `
-    // ./assets/Screenshot 2024-09-10 151334ss.png
     };
 
     updateMenuData(newData) {
@@ -30,10 +29,6 @@ export class headerComponent extends HTMLElement {
         <style>
 
     @media (max-width: 600px) {
-        .header-wrapper {
-            height: 250px;
-            min-height: 250px;
-        }
         .header--scroll {
             position: fixed;
             z-index: 200;
@@ -46,9 +41,6 @@ export class headerComponent extends HTMLElement {
                 
     /* order of execution applies here - note header--scroll-Back must be declared before header--scroll */
     @media (min-width: 600px) {
-    .header-wrapper {
-        min-height: 100px;
-    }
     .header--scroll-Back { 
         animation: 0.2s linear forwards resizeScrollBack;
         transform-origin: top;
@@ -207,6 +199,8 @@ connectedCallback() {
 disconnectedCallback() {
 // Clean up any event listeners or other resources if necessary
 
+}
+attributeChangedCallback(name, oldValue, newValue) {
 }
 
 
